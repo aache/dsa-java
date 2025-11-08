@@ -11,15 +11,20 @@ public class MoveZeroes {
         int i = 0;
         for(int j = 0; j < nums.length; j++){
             if(nums[j] != 0){
+                int c = nums[i];
                 nums[i] = nums[j];
-                nums[j] = 0;
+                nums[j] = c;
                 i++;
             }
         }
+        System.out.println("---------------------------");
         Arrays.stream(nums).forEach(System.out::println);
     }
 
     public static void main(String[] args) {
         new MoveZeroes().moveZeroes(new int[]{0,1,0,3,12});
+        new MoveZeroes().moveZeroes(new int[]{1,0});
+        new MoveZeroes().moveZeroes(new int[]{0,1});
+        new MoveZeroes().moveZeroes(new int[]{1});
     }
 }
