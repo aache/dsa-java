@@ -1,6 +1,7 @@
 package org.example.streams;
 
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -13,5 +14,12 @@ public class FindMaxAndMin {
 
         System.out.println("Max :: " + max);
         System.out.println("Min :: " + min);
+
+        // Using summaryStatistics
+        IntSummaryStatistics summaryStatistics = integers.stream().mapToInt(Integer::intValue).summaryStatistics();
+        System.out.println("Summary Statistics min ::" + summaryStatistics.getMin());
+        System.out.println("Summary Statistics max ::" + summaryStatistics.getMax());
+        System.out.println("Summary Statistics average ::" + summaryStatistics.getAverage());
+        System.out.println("Summary Statistics count ::" + summaryStatistics.getCount());
     }
 }
