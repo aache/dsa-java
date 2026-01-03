@@ -27,6 +27,6 @@ public class RomanToInt {
 
     public static void main(String[] args) {
         System.out.println(new RomanToInt().romanToInt("XIII")); //13
-        System.out.println(new RomanToInt().romanToInt("XIV")); //14
+        System.out.println(new RomanToInt().romanToInt("XIV"));  //14
     }
 }
