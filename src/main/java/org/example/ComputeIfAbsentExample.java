@@ -24,7 +24,8 @@ public class ComputeIfAbsentExample {
             wordCount.put(key, wordIndex.get(key).size());
         }
         System.out.println("Word Count : " + wordCount);
-
-
+        Map<String, List<String>> map = new HashMap<>();
+        map.computeIfAbsent("testKey" , k -> new ArrayList<>()).add("testValue");
+        System.out.println(map.get("testKey"));
     }
 }
