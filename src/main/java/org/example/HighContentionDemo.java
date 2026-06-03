@@ -29,7 +29,8 @@ public class HighContentionDemo {
         for (Thread t : threads) t.start();
         for (Thread t : threads) t.join();
 
-        System.out.println("Counter = " + counter);
+
+        System.out.println("Counter =  " + counter);
         System.out.println("Time = " +
                 (System.currentTimeMillis() - start) + " ms");
     }
