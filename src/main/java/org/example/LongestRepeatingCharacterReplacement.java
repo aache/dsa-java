@@ -23,7 +23,7 @@ public class LongestRepeatingCharacterReplacement {
             charFrequency.put(s.charAt(right), charFrequency.getOrDefault(s.charAt(right), 0) + 1);
             int maxCharFreq = Collections.max(charFrequency.values());
             int char_to_be_replaced =  (right - left + 1) - maxCharFreq;
-            System.out.println(s.substring(left,right));
+            //System.out.println(s.substring(left,right));
             while(char_to_be_replaced > k){
                 charFrequency.put(s.charAt(left), charFrequency.get(s.charAt(left)) - 1);
                 left++;
@@ -34,7 +34,7 @@ public class LongestRepeatingCharacterReplacement {
             right++;
         }
         //System.out.println(charFrequency);
-        System.out.println(maxWindow);
+        //System.out.println(maxWindow);
         return maxWindow;
     }
 
