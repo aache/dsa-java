@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class StreamQuestion {
@@ -19,36 +18,25 @@ public class StreamQuestion {
 
         // 	1.	Get the list of employee names sorted by salary (descending).
         System.out.println("Get the list of employee names sorted by salary (descending).");
-        List<Employee> sortedBySalaryEmployee = employees.stream().sorted(Comparator.comparing(e -> e.salary)).toList();
+        List<Employee> sortedBySalaryEmployee = employees.stream().sorted(Comparator.comparing(Employee::salary)).toList();
         System.out.println(sortedBySalaryEmployee);
 
         // 	2.	Find the average salary per department.
         System.out.println("Find the average salary per department.");
-        Map<String, Double> averageSalPerDept = employees.stream().collect(Collectors.groupingBy(e -> e.department, Collectors.averagingDouble(e -> e.salary)));
+        Map<String, Double> averageSalPerDept = employees.stream().collect(Collectors.groupingBy(Employee::department, Collectors.averagingDouble(Employee::salary)));
         System.out.println(averageSalPerDept);
+
+        // 3. Average age per department
+        System.out.println("Get the average age per department.");
+        Map<String, Double> averageAgePerDept = employees.stream().collect(Collectors.groupingBy(Employee::department, Collectors.averagingDouble(Employee::age)));
+        System.out.println(averageAgePerDept);
     }
 }
 
-class Employee {
-    String name;
-    String department;
-    double salary;
-    int age;
-
-    Employee(String name, String department, double salary, int age) {
-        this.name = name;
-        this.department = department;
-        this.salary = salary;
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "name='" + name + '\'' +
-                ", department='" + department + '\'' +
-                ", salary=" + salary +
-                ", age=" + age +
-                '}';
-    }
+record Employee(
+    String name,
+    String department,
+    double salary,
+    int age
+){
 }
